@@ -1,6 +1,4 @@
-/*
- * Starter file 
- */
+
 (function() {
   "use strict";
 
@@ -11,12 +9,7 @@
    */
   window.addEventListener("load", init);
 
-  /**
-   * TODO: Write a function comment using JSDoc.
-   * Every feature of the program is implemented, randomize, shift cipher,
-   * font changing, and all caps if toggled. I implemented randomizer using an array of all letters,
-   * and choosing random letter to replace each user input letter.
-   */
+
   function init() {
     // Note: In this function, we usually want to set up our event handlers
     // for UI elements on the page.
