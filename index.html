@@ -1,0 +1,59 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <title>Exam Time Calculator!</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="calc.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>ARC DSPS Exam Time Calculator</h1>
+      <h2>Calculate the exam length, based on in-class exam time, start time, and accommodation multiplier</h2>
+    </header>
+    <main>
+
+  <div id="Con">
+    <div>
+      <fieldset id="f1">
+        <legend>In-Class Exam Length</legend>
+        <input type="text" style="color:white; font-size: 1.5em;" id="input-text1" rows="1" cols="1" 
+         placeholder="Example 1:15">
+      </fieldset>
+      <fieldset id="f2">
+        <legend>Exam Start Time at DSPS</legend>
+        <input type="time" style="color:white; font-size: 1.5em;" id="input-text2" rows="1" cols="1" 
+         placeholder="Enter the exam multiplier">
+      </fieldset>
+    </div>
+  </div>
+
+      <fieldset id = "f3">
+        <legend>Accommodation Options</legend>
+
+    <div id="exContent">
+        <p>
+          <strong>Multiplier Amount: </strong>
+          <select id="calc-type">
+            <option value="oneX">1.5x</option>
+            <option value="twoX">2.0x</option>
+            <option value="threeX">2.5x</option>
+            <option value="fourX">3.0x</option>
+          </select>
+        </p>
+      </div>
+
+    <div id="exContent2">
+      <div>
+        <button id="calculate-it">Calculate!</button>
+        <button id="reset">Reset!</button>
+      </div>
+    </div>
+      </fieldset>
+
+      <div id="result-area">
+        <h2>Result:</h2>
+        <p id="result"></p>
+      </div>
+    </main>
+  </body>
+</html>
