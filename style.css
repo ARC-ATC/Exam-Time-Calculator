@@ -73,7 +73,8 @@ button, fieldset, select, #input-text, #result {
 
 #exContent2{
   display:  flex;
-  justify-content: space-around;
+  align-items: center;
+  justify-content: center;
 }
 
 
