@@ -17,7 +17,7 @@
     const btn = document.getElementById("calculate-it");
     const btn2 = document.getElementById("reset");
     btn.addEventListener('click', () => {
-      encryptClick();
+      calculateClick();
     });
 
     btn2.addEventListener('click', () => {
@@ -29,7 +29,7 @@
   // entire program in the init function, for similar reasons that
   // you shouldn't write an entire Java program in the main method).
 
-  function encryptClick(){
+  function calculateClick(){
     console.log("Calculate Button Clicked!");
     var text = document.getElementById("input-text1");
     console.log(text.value);
@@ -58,6 +58,7 @@
   }
 
   function oneF(orig, sTime){
+  	let flag = true; //true am
     orig = orig.split(":");
     sTime = sTime.split(":");
     var origDate = new Date(0, 0, 0, orig[0], orig[1], 0, 0);
@@ -67,9 +68,22 @@
     if(orig[0]>12){
       orig[0] = orig[0]-12;//keeping within 12 hr format
     }
-    if(sTime[0]>12){
-      sTime[0] = sTime[0]-12;//keeping within 12 hr format
+    if(sTime[0]>=12){
+    	if(sTime[0]<24){
+    		flag = false; //pm
+    	}
+    	else if(sTime[0]===12){
+    		flag=false;
+    	}
+    	else{
+    		flag = true; //am
+    	}
+      if(sTime[0]!=12)
+      {
+      	sTime[0] = sTime[0]-12;//keeping within 12 hr format if hr between 13 and 24 hrs
+      }
     }
+
     var seconds = orig[0] * 60 * 60 + orig[1] * 60;//original exam time in seconds
     seconds = seconds* (1.5);//original exam time multiplied by multiplier
 
@@ -84,12 +98,43 @@
       hrs = hrs-12;
     }
 
+    var NewMns = mns.toString().padStart(2, '0');
+    if(flag){
+    	if((hrs=== 12 || hrs<sTime[0])&& sTime[0]!=12){
+    		NewMns = NewMns + "PM";
+    	}
+    	else if(hrs>sTime[0]){
+    		NewMns = NewMns + "AM";
+    	}
+    	else if(sTime[0]===12 && hrs<sTime[0]){
+    		NewMns = NewMns + "AM";
+    	}
+    	else{
+    		NewMns = NewMns + "AM";
+    	}
+    }
+    else if(!flag){
+    	if((hrs=== 12 || hrs<sTime[0])&& sTime[0]!=12){
+    		NewMns = NewMns + "AM";
+    	}
+    	else if(hrs>sTime[0]){
+    		NewMns = NewMns + "PM";
+    	}
+    	else if(sTime[0]===12 && hrs<sTime[0]){
+    		NewMns = NewMns + "PM";
+    	}
+    	else{
+    		NewMns = NewMns + "PM";
+    	}
+    }
+
     console.log(hrs + ":" + mns);
     return "Multiplied Exam Time: [ " + origMultHrs.toString().padStart(2, '0') +  ":" + origMultMns.toString().padStart(2, '0') +
-    " ] Exam Stop Time: [ "+ hrs.toString().padStart(2, '0') + ":" +  mns.toString().padStart(2, '0') +" ]";
+    " ] Exam Stop Time: [ "+ hrs.toString().padStart(2, '0') + ":" +  NewMns +" ]";
   }
 
   function twoF(orig, sTime){
+  	let flag = true; //true am
     orig = orig.split(":");
     sTime = sTime.split(":");
     var origDate = new Date(0, 0, 0, orig[0], orig[1], 0, 0);
@@ -99,9 +144,22 @@
     if(orig[0]>12){
       orig[0] = orig[0]-12;//keeping within 12 hr format
     }
-    if(sTime[0]>12){
-      sTime[0] = sTime[0]-12;//keeping within 12 hr format
+    if(sTime[0]>=12){
+    	if(sTime[0]<24){
+    		flag = false; //pm
+    	}
+    	else if(sTime[0]===12){
+    		flag=false;
+    	}
+    	else{
+    		flag = true; //am
+    	}
+      if(sTime[0]!=12)
+      {
+      	sTime[0] = sTime[0]-12;//keeping within 12 hr format if hr between 13 and 24 hrs
+      }
     }
+
     var seconds = orig[0] * 60 * 60 + orig[1] * 60;//original exam time in seconds
     seconds = seconds* (2);//original exam time multiplied by multiplier
 
@@ -115,12 +173,44 @@
     if(hrs>12){
       hrs = hrs-12;
     }
+
+    var NewMns = mns.toString().padStart(2, '0');
+    if(flag){
+    	if((hrs=== 12 || hrs<sTime[0])&& sTime[0]!=12){
+    		NewMns = NewMns + "PM";
+    	}
+    	else if(hrs>sTime[0]){
+    		NewMns = NewMns + "AM";
+    	}
+    	else if(sTime[0]===12 && hrs<sTime[0]){
+    		NewMns = NewMns + "AM";
+    	}
+    	else{
+    		NewMns = NewMns + "AM";
+    	}
+    }
+    else if(!flag){
+    	if((hrs=== 12 || hrs<sTime[0])&& sTime[0]!=12){
+    		NewMns = NewMns + "AM";
+    	}
+    	else if(hrs>sTime[0]){
+    		NewMns = NewMns + "PM";
+    	}
+    	else if(sTime[0]===12 && hrs<sTime[0]){
+    		NewMns = NewMns + "PM";
+    	}
+    	else{
+    		NewMns = NewMns + "PM";
+    	}
+    }
+
     console.log(hrs + ":" + mns);
     return "Multiplied Exam Time: [ " + origMultHrs.toString().padStart(2, '0') +  ":" + origMultMns.toString().padStart(2, '0') +
-    " ] Exam Stop Time: [ "+ hrs.toString().padStart(2, '0') + ":" +  mns.toString().padStart(2, '0') +" ]";
+    " ] Exam Stop Time: [ "+ hrs.toString().padStart(2, '0') + ":" +  NewMns +" ]";
   }
 
   function threeF(orig, sTime){
+	let flag = true; //true am
     orig = orig.split(":");
     sTime = sTime.split(":");
     var origDate = new Date(0, 0, 0, orig[0], orig[1], 0, 0);
@@ -130,9 +220,22 @@
     if(orig[0]>12){
       orig[0] = orig[0]-12;//keeping within 12 hr format
     }
-    if(sTime[0]>12){
-      sTime[0] = sTime[0]-12;//keeping within 12 hr format
+    if(sTime[0]>=12){
+    	if(sTime[0]<24){
+    		flag = false; //pm
+    	}
+    	else if(sTime[0]===12){
+    		flag=false;
+    	}
+    	else{
+    		flag = true; //am
+    	}
+      if(sTime[0]!=12)
+      {
+      	sTime[0] = sTime[0]-12;//keeping within 12 hr format if hr between 13 and 24 hrs
+      }
     }
+
     var seconds = orig[0] * 60 * 60 + orig[1] * 60;//original exam time in seconds
     seconds = seconds* (2.5);//original exam time multiplied by multiplier
 
@@ -146,12 +249,44 @@
     if(hrs>12){
       hrs = hrs-12;
     }
+
+   var NewMns = mns.toString().padStart(2, '0');
+   if(flag){
+    	if((hrs=== 12 || hrs<sTime[0])&& sTime[0]!=12){
+    		NewMns = NewMns + "PM";
+    	}
+    	else if(hrs>sTime[0]){
+    		NewMns = NewMns + "AM";
+    	}
+    	else if(sTime[0]===12 && hrs<sTime[0]){
+    		NewMns = NewMns + "AM";
+    	}
+    	else{
+    		NewMns = NewMns + "AM";
+    	}
+    }
+    else if(!flag){
+    	if((hrs=== 12 || hrs<sTime[0])&& sTime[0]!=12){
+    		NewMns = NewMns + "AM";
+    	}
+    	else if(hrs>sTime[0]){
+    		NewMns = NewMns + "PM";
+    	}
+    	else if(sTime[0]===12 && hrs<sTime[0]){
+    		NewMns = NewMns + "PM";
+    	}
+    	else{
+    		NewMns = NewMns + "PM";
+    	}
+    }
+
     console.log(hrs + ":" + mns);
     return "Multiplied Exam Time: [ " + origMultHrs.toString().padStart(2, '0') +  ":" + origMultMns.toString().padStart(2, '0') +
-    " ] Exam Stop Time: [ "+ hrs.toString().padStart(2, '0') + ":" +  mns.toString().padStart(2, '0') +" ]";
+    " ] Exam Stop Time: [ "+ hrs.toString().padStart(2, '0') + ":" +  NewMns +" ]";
   }
 
   function fourF(orig, sTime){
+  	let flag = true; //true am
     orig = orig.split(":");
     sTime = sTime.split(":");
     var origDate = new Date(0, 0, 0, orig[0], orig[1], 0, 0);
@@ -161,9 +296,22 @@
     if(orig[0]>12){
       orig[0] = orig[0]-12;//keeping within 12 hr format
     }
-    if(sTime[0]>12){
-      sTime[0] = sTime[0]-12;//keeping within 12 hr format
+    if(sTime[0]>=12){
+    	if(sTime[0]<24){
+    		flag = false; //pm
+    	}
+    	else if(sTime[0]===12){
+    		flag=false;
+    	}
+    	else{
+    		flag = true; //am
+    	}
+      if(sTime[0]!=12)
+      {
+      	sTime[0] = sTime[0]-12;//keeping within 12 hr format if hr between 13 and 24 hrs
+      }
     }
+
     var seconds = orig[0] * 60 * 60 + orig[1] * 60;//original exam time in seconds
     seconds = seconds* (3);//original exam time multiplied by multiplier
 
@@ -177,9 +325,40 @@
     if(hrs>12){
       hrs = hrs-12;
     }
+
+    var NewMns = mns.toString().padStart(2, '0');
+   if(flag){
+    	if((hrs=== 12 || hrs<sTime[0])&& sTime[0]!=12){
+    		NewMns = NewMns + "PM";
+    	}
+    	else if(hrs>sTime[0]){
+    		NewMns = NewMns + "AM";
+    	}
+    	else if(sTime[0]===12 && hrs<sTime[0]){
+    		NewMns = NewMns + "AM";
+    	}
+    	else{
+    		NewMns = NewMns + "AM";
+    	}
+    }
+    else if(!flag){
+    	if((hrs=== 12 || hrs<sTime[0])&& sTime[0]!=12){
+    		NewMns = NewMns + "AM";
+    	}
+    	else if(hrs>sTime[0]){
+    		NewMns = NewMns + "PM";
+    	}
+    	else if(sTime[0]===12 && hrs<sTime[0]){
+    		NewMns = NewMns + "PM";
+    	}
+    	else{
+    		NewMns = NewMns + "PM";
+    	}
+    }
+
     console.log(hrs + ":" + mns);
     return "Multiplied Exam Time: [ " + origMultHrs.toString().padStart(2, '0') +  ":" + origMultMns.toString().padStart(2, '0') +
-    " ] Exam Stop Time: [ "+ hrs.toString().padStart(2, '0') + ":" +  mns.toString().padStart(2, '0') +" ]";
+    " ] Exam Stop Time: [ "+ hrs.toString().padStart(2, '0') + ":" +  NewMns +" ]";
   }
 
 
