@@ -117,7 +117,7 @@ fieldset {
   margin: 0 auto;
   padding: 7pt;
   border: 2px solid #101010;
-  background-color: #101010;
+  background-color: dimgray;
   /*
    * Disable resize and outline (the blue-y border thing you see when you click
    * on interactive elements on a page. Never remove outline if you are not
