@@ -35,8 +35,9 @@
     console.log("Calculate Button Clicked!");
     var text = document.getElementById("input-text1");
     console.log(text.value);
+    //using regex to check if text input matches HH:MM pattern
     var text2 = document.getElementById("input-text2");
-    if(text.value.length == 0 || text2.value.length == 0){
+    if(!(/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/.test(text.value)) || text2.value.length == 0){
       alert("Error in Exam Length or Start Time.\nPlease check the values and try again!")
     }
     else{
