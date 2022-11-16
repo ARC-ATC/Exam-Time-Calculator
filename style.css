@@ -7,10 +7,21 @@
 /* Typography */
 
 body {
-  background-color: #202020;
-  background-image: linear-gradient(#202020, gray);
+  background-image: /*url("./ref/bg_img.png"),*/ linear-gradient(#202020, gray);
   color: white;
   font-family: "Lato", sans-serif;
+}
+
+main {
+  background-image: linear-gradient(
+    to top left,
+    transparent 40%,
+    rgba(255, 255, 255, 0.15) 60%
+  );
+  padding: 1%;
+  margin: 60px;
+  border: 0.1rem outset white;
+  border-radius: 5pt;
 }
 
 button, select {
@@ -28,7 +39,7 @@ h1, h2, legend {
 h1 {
   margin: 30px auto;
   font-size: 28pt;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Orbitron", sans-serif;
   /*
    * If you've never seen text-shadow, open up the Inspector and play around
    * with it a bit!
@@ -229,9 +240,13 @@ button:hover {
   background-color: #d92b6f;
 }
 
-h2, p {
+h2, p, legend, button {
   animation: fade-in-up 0.5s;
   animation-fill-mode: both;
+}
+input {
+	animation: fade-in-only 1.5s;
+	animation-fill-mode: both;
 }
 
 p {
@@ -291,9 +306,19 @@ p {
   }
 }
 
+@keyframes fade-in-only {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 #foot{
     margin: 80px auto 0px;
     text-align: center;
+    height: -20vh;
     font-size: 0.8em;
-    font-family: Georgia, serif; 
+    font-family: Georgia, serif;
 }
