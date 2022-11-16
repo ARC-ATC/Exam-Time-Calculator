@@ -35,33 +35,37 @@
     var text = document.getElementById("input-text1");
     console.log(text.value);
     var text2 = document.getElementById("input-text2");
-    var textValue = text.value;
-    var text2Value = text2.value;
-    var calcType = document.getElementById("calc-type");
+    if(text.value.length == 0 || text2.value.length == 0){
+      alert("Error in Exam Length or Start Time.\nPlease check the values and try again!")
+    }
+    else{
+      var textValue = text.value;
+      var text2Value = text2.value;
+      var calcType = document.getElementById("calc-type");
 
-    // if(calcType.value == "oneX"){
-    //   let output = oneF(textValue, text2Value);
-    //   outText(output);
-    // }
-    if(calcType.value == "oneX"){
-      let output = calcF(textValue, text2Value, 1.5);
-      outText(output);
-    }
-    else if(calcType.value == "twoX"){
-      let output = calcF(textValue, text2Value, 2.0);
-      outText(output);
-    }
-    else if(calcType.value == "threeX"){
-      let output = calcF(textValue, text2Value, 2.5);
-      outText(output);
-    }
-    else if(calcType.value == "fourX"){
-      let output = calcF(textValue, text2Value, 3.0);
-      outText(output);
-    }
+      // if(calcType.value == "oneX"){
+      //   let output = oneF(textValue, text2Value);
+      //   outText(output);
+      // }
+      if(calcType.value == "oneX"){
+        let output = calcF(textValue, text2Value, 1.5);
+        outText(output);
+      }
+      else if(calcType.value == "twoX"){
+        let output = calcF(textValue, text2Value, 2.0);
+        outText(output);
+      }
+      else if(calcType.value == "threeX"){
+        let output = calcF(textValue, text2Value, 2.5);
+        outText(output);
+      }
+      else if(calcType.value == "fourX"){
+        let output = calcF(textValue, text2Value, 3.0);
+        outText(output);
+      }
     /*console.log(output);*/
+    }
   }
-
 
   /*
   ** Mult sends the multiplier, orig is the original exam length in class, sTime is exam start time at DSPS
@@ -151,9 +155,11 @@
     text.value = "";
     text2.value = "";
     par.innerHTML = "";
+    document.getElementById('result-area').style.display = "none";
   }
 
   function outText(text){
+    document.getElementById('result-area').style.display = "block";
     var par = document.getElementById("result");
     par.style.fontSize = "24px";
     par.textContent = text;
