@@ -15,6 +15,7 @@
     // Note: In this function, we usually want to set up our event handlers
     // for UI elements on the page.
     
+    document.getElementById('result-area').style.display = "none";
     const btn = document.getElementById("calculate-it");
     const btn2 = document.getElementById("reset");
     btn.addEventListener('click', () => {
